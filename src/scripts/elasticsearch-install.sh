@@ -316,7 +316,7 @@ format_data_disks()
         log "[format_data_disks] data node, data disks may be attached"
         log "[format_data_disks] starting partition and format attached disks"
         # using the -s paramater causing disks under /datadisks/* to be raid0'ed
-        bash vm-disk-utils-0.1.sh -s
+        bash vm-disk-utils-0.1.sh
         EXIT_CODE=$?
         if [[ $EXIT_CODE -ne 0 ]]; then
           log "[format_data_disks] returned non-zero exit code: $EXIT_CODE"
