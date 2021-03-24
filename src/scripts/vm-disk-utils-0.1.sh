@@ -124,14 +124,13 @@ has_filesystem() {
 scan_for_new_disks() {
     # Looks for unpartitioned disks
     declare -a RET
-    DEVS=($(ls -1 /dev/nvme0*|egrep -v "[0-9]$"))
+    DEVS=($(ls -1 /dev/nvme0n*))
     for DEV in "${DEVS[@]}";
     do
         # The disk will be considered a candidate for partitioning
         # and formatting if it does not have a sd?1 entry or
         # if it does have an sd?1 entry and does not contain a filesystem
         RET+=" ${DEV}"
-        fi
     done
     echo "${RET}"
 }
@@ -363,7 +362,7 @@ check_mdadm() {
 
 # Create Partitions
 DISKS=($(scan_for_new_disks))
-
+echo "${#DISKS[@]}"
 if [ "${#DISKS[@]}" -eq 0 ];
 then
     log "No unpartitioned disks without filesystems detected"
