@@ -75,7 +75,7 @@ while getopts b:sho: optname; do
       DATA_BASE=${OPTARG}
       ;;
     s)  #Partition and format data disks as raid set
-      RAID_CONFIGURATION=1
+      RAID_CONFIGURATION=0
       ;;
     o) #mount option
       MOUNT_OPTIONS=${OPTARG}
