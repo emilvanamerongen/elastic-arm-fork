@@ -130,16 +130,7 @@ scan_for_new_disks() {
         # The disk will be considered a candidate for partitioning
         # and formatting if it does not have a sd?1 entry or
         # if it does have an sd?1 entry and does not contain a filesystem
-        is_partitioned "${DEV}"
-        if [ ${?} -eq 0 ];
-        then
-            has_filesystem "${DEV}1"
-            if [ ${?} -ne 0 ];
-            then
-                RET+=" ${DEV}"
-            fi
-        else
-            RET+=" ${DEV}"
+        RET+=" ${DEV}"
         fi
     done
     echo "${RET}"
