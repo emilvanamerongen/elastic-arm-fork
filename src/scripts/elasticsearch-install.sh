@@ -814,7 +814,7 @@ configure_transport_tls()
 
         # Use CA to generate certs
         log "[configure_transport_tls] save Transport CA blob to file"
-        echo ${TRANSPORT_CACERT} | base64 -d | tee $TRANSPORT_CACERT_PATH
+        echo ${TRANSPORT_CACERT} | base64 -di | tee $TRANSPORT_CACERT_PATH
 
         # Check the cert is a CA
         echo "$TRANSPORT_CACERT_PASSWORD" | openssl pkcs12 -in $TRANSPORT_CACERT_PATH -clcerts -nokeys -passin stdin \
