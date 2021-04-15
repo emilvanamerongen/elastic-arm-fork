@@ -114,7 +114,7 @@
         "offer": "UbuntuServer",
         "sku": "18.04-LTS", 
         "version": "latest"
-      },
+      }, 
       "managementPort": 22,
       "extensionSettings": {
         "master": {
