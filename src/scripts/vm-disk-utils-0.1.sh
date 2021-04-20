@@ -155,7 +155,7 @@ get_next_mountpoint() {
         IDX=$(( ${IDX} + 1 ))
     done
     IDX=$(( ${MAX} + 1))
-    echo "${DATA_BASE}/disk${IDX}"
+    echo "${DATA_BASE}/disk1"
 }
 
 add_to_fstab() {
