@@ -93,12 +93,11 @@ while getopts b:sho: optname; do
 done
 
 get_next_md_device() {
-    shopt -s extglob
-    LAST_DEVICE=$(ls -1 /dev/md+([0-9]) 2>/dev/null|sort -n|tail -n1)
+    LAST_DEVICE=$(ls -1 /dev/md[0-9]* 2>/dev/null | sort -V | tail -n1)
     if [ -z "${LAST_DEVICE}" ]; then
         NEXT=/dev/md0
     else
-        NUMBER=$((${LAST_DEVICE/\/dev\/md/}))
+        NUMBER=$((${LAST_DEVICE/\/dev\/md/} + 1))
         NEXT=/dev/md${NUMBER}
     fi
     echo ${NEXT}
